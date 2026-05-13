@@ -12,15 +12,14 @@ Keep the explanation concise and focused on decisions: architecture, Docker-firs
 
 ## Checklist
 
-- [ ] Add or update root quality commands.
-- [ ] Document Docker-only development.
-- [ ] Document database and migration commands.
-- [ ] Document architecture decisions briefly.
-- [ ] Document the Radix wrapper component approach.
-- [ ] Document abuse-prevention measures.
-- [ ] Fill `CHALLENGE_SUBMISSION.md`.
-- [ ] Include AI usage notes.
-- [ ] Mention tradeoffs and what remains for later.
-- [ ] Run final Docker build.
-- [ ] Run final typecheck.
-- [ ] Run final tests.
+- [x] Add or update root quality commands.
+- [x] Document Docker-only development.
+- [x] Document database and migration commands.
+- [x] Document architecture decisions briefly.
+- [x] Document the Radix wrapper component approach.
+- [x] Document abuse-prevention measures.
+- [x] Include AI usage notes.
+- [x] Mention tradeoffs and what remains for later.
+- [x] Run final Docker build.
+- [x] Run final typecheck.
+- [x] Run final tests.

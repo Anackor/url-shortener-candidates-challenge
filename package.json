@@ -7,6 +7,7 @@
     "build": "turbo build",
     "typecheck": "turbo typecheck",
     "test": "turbo test",
+    "quality": "pnpm typecheck && pnpm test && pnpm build",
     "db:generate": "pnpm --filter web db:generate",
     "db:migrate": "pnpm --filter web db:migrate",
     "db:deploy": "pnpm --filter web db:deploy",

@@ -1,6 +1,6 @@
 import { redirect } from "react-router";
 import type { Route } from "./+types/s.$code";
-import { ShortUrlError } from "@url-shortener/engine";
+import { isNotFoundShortUrlError } from "~/server/short-url-route-data.server";
 import { resolveShortUrlForRequest } from "~/server/short-url.server";
 
 export async function loader({ params }: Route.LoaderArgs) {
@@ -11,11 +11,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 
     return redirect(shortUrl.originalUrl);
   } catch (error) {
-    if (
-      error instanceof ShortUrlError &&
-      (error.code === "short_url_not_found" ||
-        error.code === "invalid_short_code")
-    ) {
+    if (isNotFoundShortUrlError(error)) {
       throw new Response("Not Found", { status: 404 });
     }
 

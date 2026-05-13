@@ -1,19 +1,21 @@
 import { Form, useActionData } from "react-router";
 import type { Route } from "./+types/_index";
-import { ShortUrlError } from "@url-shortener/engine";
-import { getPublicUrl } from "~/server/config.server";
+import {
+  createShortenedUrl,
+  getFormError,
+  toShortUrlListItem,
+} from "~/server/short-url-route-data.server";
 import {
   createShortUrlForRequest,
   listShortUrlsForRequest,
 } from "~/server/short-url.server";
 
 export async function loader() {
-  const publicUrl = getPublicUrl();
   const shortUrls = await listShortUrlsForRequest();
 
   return {
-    baseUrl: `${publicUrl}/s/`,
-    shortUrls,
+    baseUrl: createShortenedUrl(""),
+    shortUrls: shortUrls.map(toShortUrlListItem),
   };
 }
 
@@ -29,11 +31,13 @@ export async function action({ request }: Route.ActionArgs) {
     const shortUrl = await createShortUrlForRequest({ originalUrl: url });
 
     return {
-      shortenedUrl: `${getPublicUrl()}/s/${shortUrl.code}`,
+      shortenedUrl: createShortenedUrl(shortUrl.code),
     };
   } catch (error) {
-    if (error instanceof ShortUrlError) {
-      return { error: error.message };
+    const formError = getFormError(error);
+
+    if (formError) {
+      return { error: formError };
     }
 
     throw error;

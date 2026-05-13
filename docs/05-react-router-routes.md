@@ -12,13 +12,13 @@ Routes may depend on server wiring and engine use cases. They should not directl
 
 ## Checklist
 
-- [ ] Refactor `_index.tsx` loader to load URL statistics.
-- [ ] Refactor `_index.tsx` action to create short URLs through the use case.
-- [ ] Map validation errors to form feedback.
-- [ ] Return meaningful action errors for invalid input and expected failures.
-- [ ] Build the public shortened URL in the web layer.
-- [ ] Refactor `s.$code.tsx` loader to resolve through the use case.
-- [ ] Increment click statistics during resolution.
-- [ ] Return a proper 404 for unknown codes.
-- [ ] Avoid leaking internal error details to the UI.
-- [ ] Remove direct imports of storage/generator internals from routes.
+- [x] Refactor `_index.tsx` loader to load URL statistics.
+- [x] Refactor `_index.tsx` action to create short URLs through the use case.
+- [x] Map validation errors to form feedback.
+- [x] Return meaningful action errors for invalid input and expected failures.
+- [x] Build the public shortened URL in the web layer.
+- [x] Refactor `s.$code.tsx` loader to resolve through the use case.
+- [x] Increment click statistics during resolution.
+- [x] Return a proper 404 for unknown codes.
+- [x] Avoid leaking internal error details to the UI.
+- [x] Remove direct imports of storage/generator internals from routes.

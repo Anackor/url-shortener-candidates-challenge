@@ -1,32 +1,53 @@
 import { Form, useActionData } from "react-router";
 import type { Route } from "./+types/_index";
 import {
-  baseUrl,
-  shortenedUrls,
-  generateShortCode,
+  createShortUrl,
+  listShortUrls,
+  ShortUrlError,
 } from "@url-shortener/engine";
+import { getPublicUrl } from "~/server/config.server";
+import {
+  codeGenerator,
+  shortUrlRepository,
+} from "~/server/short-url-dependencies.server";
 
-export function loader() {
+export async function loader() {
+  const publicUrl = getPublicUrl();
+  const shortUrls = await listShortUrls({ repository: shortUrlRepository });
+
   return {
-    baseUrl: baseUrl ? baseUrl + "/s/" : "-",
+    baseUrl: `${publicUrl}/s/`,
+    shortUrls,
   };
 }
 
 export async function action({ request }: Route.ActionArgs) {
   const formData = await request.formData();
-  const url = formData.get("url") as string;
+  const url = formData.get("url");
 
-  if (!url) {
+  if (typeof url !== "string") {
     return { error: "URL is required" };
   }
 
-  const shortCode = generateShortCode();
+  try {
+    const shortUrl = await createShortUrl(
+      { originalUrl: url },
+      {
+        repository: shortUrlRepository,
+        codeGenerator,
+      },
+    );
 
-  shortenedUrls.set(shortCode, url);
+    return {
+      shortenedUrl: `${getPublicUrl()}/s/${shortUrl.code}`,
+    };
+  } catch (error) {
+    if (error instanceof ShortUrlError) {
+      return { error: error.message };
+    }
 
-  return {
-    shortenedUrl: `${baseUrl}/s/${shortCode}`,
-  };
+    throw error;
+  }
 }
 
 export function meta({}: Route.MetaArgs) {

@@ -12,17 +12,17 @@ Follow the boundaries defined in `AGENTS.md`: the engine must not import React, 
 
 ## Checklist
 
-- [ ] Create the `libs/engine/src/short-url` structure.
-- [ ] Add domain types for short URLs, original URLs and short codes.
-- [ ] Add URL validation and normalization rules.
-- [ ] Add short-code validation rules.
-- [ ] Generate unique short codes with collision handling.
-- [ ] Define expected application errors.
-- [ ] Define `ShortUrlRepository` port.
-- [ ] Define `CodeGenerator` port.
-- [ ] Implement `createShortUrl` use case.
-- [ ] Implement `resolveShortUrl` use case.
-- [ ] Implement `listShortUrls` use case.
-- [ ] Remove `baseUrl` from the engine.
-- [ ] Stop exporting mutable global state from the engine.
-- [ ] Export the new public API from `libs/engine/src/index.ts`.
+- [x] Create the `libs/engine/src/short-url` structure.
+- [x] Add domain types for short URLs, original URLs and short codes.
+- [x] Add URL validation and normalization rules.
+- [x] Add short-code validation rules.
+- [x] Generate unique short codes with collision handling.
+- [x] Define expected application errors.
+- [x] Define `ShortUrlRepository` port.
+- [x] Define `CodeGenerator` port.
+- [x] Implement `createShortUrl` use case.
+- [x] Implement `resolveShortUrl` use case.
+- [x] Implement `listShortUrls` use case.
+- [x] Remove `baseUrl` from the engine.
+- [x] Stop exporting mutable global state from the engine.
+- [x] Export the new public API from `libs/engine/src/index.ts`.

@@ -27,6 +27,7 @@ libs/engine/src/
 
 applications/web/app/
   components/
+    ui/
   routes/
   server/
     repositories/
@@ -63,6 +64,8 @@ applications/web/app/
 - Presentational React components.
 - Can depend on route data and UI types.
 - Must not depend on repositories, Prisma or server-only modules.
+- Wraps Radix primitives behind project-owned components when Radix is used.
+- Routes/pages should import project components, not Radix primitives directly.
 
 `applications/web/app/server`
 

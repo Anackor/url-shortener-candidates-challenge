@@ -30,22 +30,22 @@ Use Radix only where its accessible primitives add value. Simple elements can re
 
 ## Checklist
 
-- [ ] Add required Radix packages.
-- [ ] Create a local `components/ui` layer for Radix-backed primitives.
-- [ ] Ensure routes/pages import project components instead of Radix primitives directly.
-- [ ] Document the Radix wrapper approach.
-- [ ] Create `Button`.
-- [ ] Create `TextField`.
-- [ ] Create `Callout` or equivalent error/status primitive.
-- [ ] Create `UrlShortenerForm`.
-- [ ] Create `ShortenedUrlResult`.
-- [ ] Create `UrlList`.
-- [ ] Create `FieldError`.
-- [ ] Add accessible labels, focus states and error announcements.
-- [ ] Replace the current intentionally ugly layout.
-- [ ] Add loading state during form submission.
-- [ ] Disable duplicate submissions while the action is pending.
-- [ ] Show created short URL clearly.
-- [ ] Add convenient copy/open behavior for shortened URLs.
-- [ ] Show URL list with original URL, short URL, clicks and creation date.
-- [ ] Keep components free of Prisma and repository imports.
+- [x] Add required Radix packages.
+- [x] Create a local `components/ui` layer for Radix-backed primitives.
+- [x] Ensure routes/pages import project components instead of Radix primitives directly.
+- [x] Document the Radix wrapper approach.
+- [x] Create `Button`.
+- [x] Create `TextField`.
+- [x] Create `Callout` or equivalent error/status primitive.
+- [x] Create `UrlShortenerForm`.
+- [x] Create `ShortenedUrlResult`.
+- [x] Create `UrlList`.
+- [x] Create `FieldError`.
+- [x] Add accessible labels, focus states and error announcements.
+- [x] Replace the current intentionally ugly layout.
+- [x] Add loading state during form submission.
+- [x] Disable duplicate submissions while the action is pending.
+- [x] Show created short URL clearly.
+- [x] Add convenient copy/open behavior for shortened URLs.
+- [x] Show URL list with original URL, short URL, clicks and creation date.
+- [x] Keep components free of Prisma and repository imports.

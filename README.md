@@ -98,7 +98,7 @@ The application includes lightweight protections suitable for this challenge:
 - Maximum original URL length.
 - Non-guessable short codes generated with `crypto.randomInt`.
 - Collision checks with retries before persisting a short URL.
-- Rejection of URLs pointing back to the configured shortener origin.
+- Rejection of URLs pointing back to existing short URL routes under `/s/`.
 - Basic per-client rate limiting for URL creation.
 - Production error boundary avoids exposing stack traces.
 

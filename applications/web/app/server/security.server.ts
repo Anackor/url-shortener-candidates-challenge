@@ -57,13 +57,16 @@ export function assertUrlDoesNotPointToShortener(value: string): void {
     return;
   }
 
-  if (originalUrl.origin !== publicUrl.origin) {
+  if (
+    originalUrl.origin !== publicUrl.origin ||
+    !originalUrl.pathname.startsWith("/s/")
+  ) {
     return;
   }
 
   throw new ShortUrlRequestError(
     "self_referential_url",
-    "Shortening URLs from this shortener is not allowed.",
+    "Shortening existing short URLs is not allowed.",
   );
 }
 

@@ -12,11 +12,11 @@ This layer may depend on `libs/engine`, Prisma and runtime environment. React co
 
 ## Checklist
 
-- [ ] Create `applications/web/app/server`.
-- [ ] Add `config.server.ts`.
-- [ ] Validate required environment variables.
-- [ ] Add `db.server.ts`.
-- [ ] Add repository wiring.
-- [ ] Add use-case dependency wiring.
-- [ ] Ensure server-only files use `.server.ts`.
-- [ ] Ensure React components do not import server-only modules.
+- [x] Create `applications/web/app/server`.
+- [x] Add `config.server.ts`.
+- [x] Validate required environment variables.
+- [x] Add `db.server.ts`.
+- [x] Add repository wiring.
+- [x] Add use-case dependency wiring.
+- [x] Ensure server-only files use `.server.ts`.
+- [x] Ensure React components do not import server-only modules.

@@ -1,19 +1,15 @@
 import { Form, useActionData } from "react-router";
 import type { Route } from "./+types/_index";
-import {
-  createShortUrl,
-  listShortUrls,
-  ShortUrlError,
-} from "@url-shortener/engine";
+import { ShortUrlError } from "@url-shortener/engine";
 import { getPublicUrl } from "~/server/config.server";
 import {
-  codeGenerator,
-  shortUrlRepository,
-} from "~/server/short-url-dependencies.server";
+  createShortUrlForRequest,
+  listShortUrlsForRequest,
+} from "~/server/short-url.server";
 
 export async function loader() {
   const publicUrl = getPublicUrl();
-  const shortUrls = await listShortUrls({ repository: shortUrlRepository });
+  const shortUrls = await listShortUrlsForRequest();
 
   return {
     baseUrl: `${publicUrl}/s/`,
@@ -30,13 +26,7 @@ export async function action({ request }: Route.ActionArgs) {
   }
 
   try {
-    const shortUrl = await createShortUrl(
-      { originalUrl: url },
-      {
-        repository: shortUrlRepository,
-        codeGenerator,
-      },
-    );
+    const shortUrl = await createShortUrlForRequest({ originalUrl: url });
 
     return {
       shortenedUrl: `${getPublicUrl()}/s/${shortUrl.code}`,

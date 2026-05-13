@@ -1,16 +1,13 @@
 import { redirect } from "react-router";
 import type { Route } from "./+types/s.$code";
-import { resolveShortUrl, ShortUrlError } from "@url-shortener/engine";
-import { shortUrlRepository } from "~/server/short-url-dependencies.server";
+import { ShortUrlError } from "@url-shortener/engine";
+import { resolveShortUrlForRequest } from "~/server/short-url.server";
 
 export async function loader({ params }: Route.LoaderArgs) {
   const { code } = params;
 
   try {
-    const shortUrl = await resolveShortUrl(
-      { code },
-      { repository: shortUrlRepository },
-    );
+    const shortUrl = await resolveShortUrlForRequest({ code });
 
     return redirect(shortUrl.originalUrl);
   } catch (error) {

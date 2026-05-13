@@ -59,7 +59,7 @@ export function assertUrlDoesNotPointToShortener(value: string): void {
 
   if (
     originalUrl.origin !== publicUrl.origin ||
-    !originalUrl.pathname.startsWith("/s/")
+    !isShortUrlRoutePath(originalUrl.pathname)
   ) {
     return;
   }
@@ -68,6 +68,20 @@ export function assertUrlDoesNotPointToShortener(value: string): void {
     "self_referential_url",
     "Shortening existing short URLs is not allowed.",
   );
+}
+
+function isShortUrlRoutePath(pathname: string): boolean {
+  const decodedPathname = decodePathname(pathname);
+
+  return decodedPathname === "/s" || decodedPathname.startsWith("/s/");
+}
+
+function decodePathname(pathname: string): string {
+  try {
+    return decodeURIComponent(pathname);
+  } catch {
+    return pathname;
+  }
 }
 
 function getClientId(request: Request): string {

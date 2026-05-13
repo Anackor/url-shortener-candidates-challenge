@@ -4,6 +4,7 @@ export type OriginalUrl = string & { readonly __brand: "OriginalUrl" };
 
 const MAX_ORIGINAL_URL_LENGTH = 2048;
 const ALLOWED_PROTOCOLS = new Set(["http:", "https:"]);
+const ASCII_CONTROL_CHARACTER_PATTERN = /[\u0000-\u001F\u007F]/;
 
 export function createOriginalUrl(value: string): OriginalUrl {
   const candidate = value.trim();
@@ -14,6 +15,13 @@ export function createOriginalUrl(value: string): OriginalUrl {
 
   if (candidate.length > MAX_ORIGINAL_URL_LENGTH) {
     throw new ShortUrlError("invalid_original_url", "URL is too long");
+  }
+
+  if (ASCII_CONTROL_CHARACTER_PATTERN.test(candidate)) {
+    throw new ShortUrlError(
+      "invalid_original_url",
+      "URL contains unsupported characters",
+    );
   }
 
   let parsedUrl: URL;

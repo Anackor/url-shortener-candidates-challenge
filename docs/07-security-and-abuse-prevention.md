@@ -14,6 +14,7 @@ Security rules may be enforced in the engine when they are domain rules, or in `
 
 - [x] Reject non-HTTP(S) URLs.
 - [x] Reject malformed URLs with user-friendly errors.
+- [x] Reject unsupported ASCII control characters in original URLs.
 - [x] Reject URLs that point back to existing short URL routes when possible.
 - [x] Add a maximum original URL length.
 - [x] Generate non-guessable short codes with enough entropy.

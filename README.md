@@ -95,10 +95,11 @@ Current reusable components live under `applications/web/app/components/`, inclu
 The application includes lightweight protections suitable for this challenge:
 
 - HTTP(S)-only URL validation and malformed URL feedback.
+- Rejection of unsupported ASCII control characters in original URLs.
 - Maximum original URL length.
 - Non-guessable short codes generated with `crypto.randomInt`.
 - Collision checks with retries before persisting a short URL.
-- Rejection of URLs pointing back to existing short URL routes under `/s/`.
+- Rejection of URLs pointing back to existing short URL routes under `/s/`, including simple percent-encoded variants.
 - Basic per-client rate limiting for URL creation.
 - Production error boundary avoids exposing stack traces.
 

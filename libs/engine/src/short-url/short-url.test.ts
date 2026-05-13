@@ -113,6 +113,21 @@ describe("createShortUrl", () => {
     );
   });
 
+  it("rejects original URLs with unsupported control characters", async () => {
+    await expect(
+      createShortUrl(
+        { originalUrl: "https://example.com/a\tb" },
+        {
+          repository: new InMemoryShortUrlRepository(),
+          codeGenerator: new SequenceCodeGenerator(["CODE1"]),
+        },
+      ),
+    ).rejects.toMatchObject({
+      code: "invalid_original_url",
+      message: "URL contains unsupported characters",
+    } satisfies Partial<ShortUrlError>);
+  });
+
   it("retries when generated codes collide", async () => {
     const repository = new InMemoryShortUrlRepository([
       createExistingShortUrl({ code: createShortCode("TAKEN1") }),

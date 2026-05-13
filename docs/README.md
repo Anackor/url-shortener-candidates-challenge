@@ -8,7 +8,6 @@ Each block is self-contained so an agent can work on it without loading the full
 
 1. [Engine Core](./01-engine-core.md)
 2. [Engine Tests](./02-engine-tests.md)
-   - [Engine Tests Notes](./02-engine-tests-notes.md)
 3. [Persistence](./03-persistence.md)
 4. [Web Server Wiring](./04-web-server-wiring.md)
 5. [React Router Routes](./05-react-router-routes.md)

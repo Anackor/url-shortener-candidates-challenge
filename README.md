@@ -50,6 +50,9 @@ Run project commands from inside Docker:
 ```bash
 docker compose run --rm web pnpm build
 docker compose run --rm web pnpm typecheck
+docker compose run --rm web pnpm test
+docker compose run --rm web pnpm db:migrate
+docker compose run --rm web pnpm db:deploy
 ```
 
 Stop the stack:

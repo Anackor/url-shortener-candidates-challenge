@@ -12,14 +12,14 @@ The repository interface should live in `libs/engine`; the Prisma implementation
 
 ## Checklist
 
-- [ ] Add Prisma dependencies to `applications/web`.
-- [ ] Add Prisma schema under `applications/web`.
-- [ ] Configure `DATABASE_URL` usage through server config.
-- [ ] Create the `ShortUrl` model.
-- [ ] Add an initial migration.
-- [ ] Add a Docker-based migration command.
-- [ ] Create `db.server.ts`.
-- [ ] Implement `PrismaShortUrlRepository`.
-- [ ] Map Prisma records to engine domain types.
-- [ ] Keep Prisma types out of `libs/engine`.
-- [ ] Verify data survives container restarts.
+- [x] Add Prisma dependencies to `applications/web`.
+- [x] Add Prisma schema under `applications/web`.
+- [x] Configure `DATABASE_URL` usage through server config.
+- [x] Create the `ShortUrl` model.
+- [x] Add an initial migration.
+- [x] Add a Docker-based migration command.
+- [x] Create `db.server.ts`.
+- [x] Implement `PrismaShortUrlRepository`.
+- [x] Map Prisma records to engine domain types.
+- [x] Keep Prisma types out of `libs/engine`.
+- [x] Verify data survives container restarts.

@@ -24,7 +24,7 @@ services:
       context: .
       dockerfile: Dockerfile
       target: development
-    command: pnpm --filter web dev --host 0.0.0.0
+    command: sh -c "pnpm db:generate && pnpm db:deploy && pnpm --filter web dev --host 0.0.0.0"
     ports:
       - "${WEB_PORT:-5173}:5173"
     environment:

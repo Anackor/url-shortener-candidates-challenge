@@ -8,6 +8,11 @@ COPY libs/engine/package.json ./libs/engine/
 COPY applications/web/package.json ./applications/web/
 RUN pnpm install --frozen-lockfile
 
+FROM dependencies AS development
+COPY . .
+EXPOSE 5173
+CMD ["pnpm", "--filter", "web", "dev", "--host", "0.0.0.0"]
+
 FROM base AS build
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY --from=dependencies /app/libs/engine/node_modules ./libs/engine/node_modules

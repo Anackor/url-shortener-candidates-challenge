@@ -12,12 +12,12 @@ Security rules may be enforced in the engine when they are domain rules, or in `
 
 ## Checklist
 
-- [ ] Reject non-HTTP(S) URLs.
-- [ ] Reject malformed URLs with user-friendly errors.
-- [ ] Reject URLs that point back to the shortener service when possible.
-- [ ] Add a maximum original URL length.
-- [ ] Generate non-guessable short codes with enough entropy.
-- [ ] Ensure code collisions are handled safely.
-- [ ] Consider basic per-IP rate limiting for URL creation.
-- [ ] Avoid exposing stack traces or internal errors in production responses.
-- [ ] Document which abuse-prevention measures were implemented.
+- [x] Reject non-HTTP(S) URLs.
+- [x] Reject malformed URLs with user-friendly errors.
+- [x] Reject URLs that point back to the shortener service when possible.
+- [x] Add a maximum original URL length.
+- [x] Generate non-guessable short codes with enough entropy.
+- [x] Ensure code collisions are handled safely.
+- [x] Consider basic per-IP rate limiting for URL creation.
+- [x] Avoid exposing stack traces or internal errors in production responses.
+- [x] Document which abuse-prevention measures were implemented.

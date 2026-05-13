@@ -1,5 +1,6 @@
 import { ShortUrlError, type ShortUrl } from "@url-shortener/engine";
 import { getPublicUrl } from "./config.server";
+import { ShortUrlRequestError } from "./security.server";
 
 export interface ShortUrlListItem {
   code: string;
@@ -24,6 +25,10 @@ export function toShortUrlListItem(shortUrl: ShortUrl): ShortUrlListItem {
 }
 
 export function getFormError(error: unknown): string | null {
+  if (error instanceof ShortUrlRequestError) {
+    return error.message;
+  }
+
   if (!(error instanceof ShortUrlError)) {
     return null;
   }

@@ -12,6 +12,10 @@ import {
   createShortUrlForRequest,
   listShortUrlsForRequest,
 } from "~/server/short-url.server";
+import {
+  assertCreateShortUrlRequestIsAllowed,
+  assertUrlDoesNotPointToShortener,
+} from "~/server/security.server";
 
 export async function loader() {
   const shortUrls = await listShortUrlsForRequest();
@@ -31,6 +35,9 @@ export async function action({ request }: Route.ActionArgs) {
   }
 
   try {
+    assertCreateShortUrlRequestIsAllowed(request);
+    assertUrlDoesNotPointToShortener(url);
+
     const shortUrl = await createShortUrlForRequest({ originalUrl: url });
 
     return {

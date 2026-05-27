@@ -2,10 +2,6 @@ name: Quality
 
 on:
   pull_request:
-  push:
-    branches:
-      - challenge/codebase-refactor
-  workflow_dispatch:
 
 jobs:
   quality:
